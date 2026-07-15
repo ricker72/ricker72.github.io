@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<npcs>
+	<npc centerx="1132" centery="1220" centerz="6" radius="1">
+		<npc name="Grubokk" x="0" y="0" z="6" spawntime="60" />
+	</npc>
+	<npc centerx="1108" centery="1081" centerz="7" radius="1">
+		<npc name="Nibble" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="1078" centery="1082" centerz="7" radius="1">
+		<npc name="Ghorza" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="1089" centery="1088" centerz="7" radius="1">
+		<npc name="Vuzrog" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="1107" centery="1090" centerz="7" radius="1">
+		<npc name="Larek" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="1085" centery="1104" centerz="7" radius="1">
+		<npc name="Mugruu" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+</npcs>

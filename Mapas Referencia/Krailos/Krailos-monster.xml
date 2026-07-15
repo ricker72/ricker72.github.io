@@ -1,0 +1,863 @@
+<?xml version="1.0"?>
+<monsters>
+	<monster centerx="1110" centery="1196" centerz="6" radius="3">
+		<monster name="Dragon Hatchling" x="1" y="-2" z="6" spawntime="90" />
+		<monster name="Dragon" x="3" y="1" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1110" centery="1203" centerz="6" radius="3">
+		<monster name="Dragon Hatchling" x="3" y="-3" z="6" spawntime="90" />
+		<monster name="Dragon" x="3" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1203" centerz="6" radius="3">
+		<monster name="Dragon Hatchling" x="-3" y="-1" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1203" centerz="6" radius="3">
+		<monster name="Dragon Hatchling" x="-3" y="2" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1203" centerz="6" radius="3">
+		<monster name="Dragon" x="1" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1156" centery="1207" centerz="6" radius="1">
+		<monster name="Dragon" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1122" centery="1209" centerz="6" radius="1">
+		<monster name="Dragon" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1144" centery="1210" centerz="6" radius="1">
+		<monster name="Dragon" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1019" centery="986" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="986" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1012" centery="993" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="-1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="993" centerz="7" radius="3">
+		<monster name="Clomp" x="0" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1068" centery="993" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1030" centery="996" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="998" centery="1000" centerz="7" radius="3">
+		<monster name="Clomp" x="0" y="-3" z="7" spawntime="90" />
+		<monster name="Clomp" x="3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1033" centery="1000" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1000" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="-3" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="-2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1068" centery="1000" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1000" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1003" centery="1005" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="991" centery="1007" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1019" centery="1007" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="3" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1007" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1040" centery="1007" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="2" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1007" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-3" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1007" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="-3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1066" centery="1013" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="998" centery="1014" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1019" centery="1014" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1033" centery="1014" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="1" z="7" spawntime="90" />
+		<monster name="Dworc Voodoomaster" x="1" y="2" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="3" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1040" centery="1014" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-2" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1014" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1014" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1014" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1103" centery="1014" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1068" centery="1020" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1113" centery="1020" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1012" centery="1021" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="0" z="7" spawntime="90" />
+		<monster name="Clomp" x="1" y="2" z="7" spawntime="90" />
+		<monster name="Clomp" x="0" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1021" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1021" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="2" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1021" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1016" centery="1022" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1121" centery="1023" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1119" centery="1027" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1028" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="0" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1103" centery="1028" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="956" centery="1035" centerz="7" radius="3">
+		<monster name="Clomp" x="-1" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="963" centery="1035" centerz="7" radius="3">
+		<monster name="Clomp" x="-1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1035" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1089" centery="1035" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1103" centery="1035" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="2" y="-1" z="7" spawntime="90" />
+		<monster name="Dworc Fleshhunter" x="3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1077" centery="1040" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="956" centery="1042" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="963" centery="1042" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1019" centery="1042" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1040" centery="1042" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="1" y="-2" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="-3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1042" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1042" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1042" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1110" centery="1042" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="1" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1042" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1042" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1042" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1180" centery="1042" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1085" centery="1045" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1077" centery="1048" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="977" centery="1049" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1049" centerz="7" radius="3">
+		<monster name="Terror Bird" x="0" y="1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1049" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1131" centery="1049" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="0" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1049" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1166" centery="1049" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1187" centery="1049" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="970" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="2" y="2" z="7" spawntime="90" />
+		<monster name="Dworc Voodoomaster" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="991" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1012" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="2" y="-3" z="7" spawntime="90" />
+		<monster name="Dworc Fleshhunter" x="3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1068" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="3" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1089" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-3" y="-3" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="3" y="-1" z="7" spawntime="90" />
+		<monster name="Ogre Savage" x="2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1110" centery="1056" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1056" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1056" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1056" centerz="7" radius="3">
+		<monster name="Terror Bird" x="2" y="2" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1044" centery="1060" centerz="7" radius="1">
+		<monster name="Clomp" x="-1" y="0" z="7" spawntime="14402" />
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1116" centery="1061" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="977" centery="1063" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="0" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1063" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1012" centery="1063" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1063" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="3" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1063" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1063" centerz="7" radius="3">
+		<monster name="Clomp" x="-1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1063" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1063" centerz="7" radius="3">
+		<monster name="Terror Bird" x="-2" y="-3" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1035" centery="1064" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1064" centery="1064" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1038" centery="1065" centerz="7" radius="1">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+		<monster name="Clomp" x="0" y="1" z="7" spawntime="14402" />
+	</monster>
+	<monster centerx="1140" centery="1065" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="-1" y="0" z="7" spawntime="14402" />
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1135" centery="1066" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1028" centery="1068" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="991" centery="1070" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1070" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1070" centerz="7" radius="3">
+		<monster name="Clomp" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1070" centerz="7" radius="3">
+		<monster name="Clomp" x="-1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1068" centery="1070" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1146" centery="1072" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1146" centery="1075" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="970" centery="1077" centerz="7" radius="3">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="0" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="984" centery="1077" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="991" centery="1077" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-2" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="998" centery="1077" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="-2" z="7" spawntime="90" />
+		<monster name="Ogre Savage" x="0" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1019" centery="1077" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1077" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1227" centery="1077" centerz="7" radius="1">
+		<monster name="Sphinx" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1030" centery="1081" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1232" centery="1083" centerz="7" radius="1">
+		<monster name="Lamassu" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1054" centery="1084" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-1" z="7" spawntime="90" />
+		<monster name="Clomp" x="2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1084" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1084" centerz="7" radius="3">
+		<monster name="Corym Charlatan" x="-1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1124" centery="1084" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1138" centery="1084" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1084" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1084" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-2" y="-1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1173" centery="1084" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1187" centery="1084" centerz="7" radius="3">
+		<monster name="Clomp" x="0" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1226" centery="1085" centerz="7" radius="1">
+		<monster name="Lamassu" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1231" centery="1087" centerz="7" radius="1">
+		<monster name="Sphinx" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1153" centery="1088" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1229" centery="1089" centerz="7" radius="1">
+		<monster name="Crab" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1232" centery="1089" centerz="7" radius="1">
+		<monster name="Crab" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="963" centery="1091" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="970" centery="1091" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="977" centery="1091" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1091" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1173" centery="1091" centerz="7" radius="3">
+		<monster name="Terror Bird" x="1" y="-1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-1" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1187" centery="1091" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1228" centery="1094" centerz="7" radius="1">
+		<monster name="Sphinx" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1180" centery="1095" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1226" centery="1096" centerz="7" radius="1">
+		<monster name="Lamassu" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="991" centery="1098" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="3" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1098" centerz="7" radius="3">
+		<monster name="Dworc Fleshhunter" x="2" y="-1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1019" centery="1098" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="1" y="-1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1098" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1033" centery="1098" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="0" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1040" centery="1098" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1098" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1098" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1098" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1040" centery="1104" centerz="7" radius="1">
+		<monster name="Ogre Shaman" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="977" centery="1105" centerz="7" radius="3">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="991" centery="1105" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1105" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="0" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1105" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1105" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1173" centery="1105" centerz="7" radius="3">
+		<monster name="Terror Bird" x="0" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1168" centery="1108" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="977" centery="1112" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="984" centery="1112" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1112" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1112" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="3" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="2" y="2" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="0" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1040" centery="1112" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="-3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1112" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1112" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1112" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1124" centery="1112" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1112" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1180" centery="1112" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="3" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Savage" x="3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1187" centery="1112" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="1" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="996" centery="1115" centerz="7" radius="1">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1180" centery="1117" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1119" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1012" centery="1119" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="-3" z="7" spawntime="90" />
+		<monster name="Clomp" x="2" y="-3" z="7" spawntime="90" />
+		<monster name="Clomp" x="-2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1040" centery="1119" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1119" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1119" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-3" y="-3" z="7" spawntime="90" />
+		<monster name="Clomp" x="-3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1119" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1119" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1119" centerz="7" radius="3">
+		<monster name="Terror Bird" x="2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1173" centery="1119" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-1" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1135" centery="1122" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1021" centery="1124" centerz="7" radius="1">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1138" centery="1124" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="998" centery="1126" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1012" centery="1126" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1126" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1126" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1126" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1166" centery="1126" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="2" y="0" z="7" spawntime="90" />
+		<monster name="Dworc Fleshhunter" x="-3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1175" centery="1127" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1153" centery="1129" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1133" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="-2" y="3" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1133" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="0" y="-3" z="7" spawntime="90" />
+		<monster name="Dworc Voodoomaster" x="2" y="-3" z="7" spawntime="90" />
+		<monster name="Ogre Savage" x="0" y="-2" z="7" spawntime="90" />
+		<monster name="Dworc Fleshhunter" x="2" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1133" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1133" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="3" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="0" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1131" centery="1133" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1138" centery="1133" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="-3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1133" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1133" centerz="7" radius="3">
+		<monster name="Terror Bird" x="0" y="2" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1140" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1140" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1089" centery="1140" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1110" centery="1140" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1131" centery="1140" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1140" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1157" centery="1141" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1136" centery="1143" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1147" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1147" centerz="7" radius="3">
+		<monster name="Clomp" x="0" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1103" centery="1147" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="1" y="-3" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-3" y="2" z="7" spawntime="90" />
+		<monster name="Dworc Voodoomaster" x="-2" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1147" centerz="7" radius="3">
+		<monster name="Dworc Voodoomaster" x="3" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1124" centery="1147" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1131" centery="1147" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-2" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1155" centery="1147" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1151" centerz="7" radius="1">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1154" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1154" centerz="7" radius="3">
+		<monster name="Clomp" x="-2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1154" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="1" y="2" z="7" spawntime="90" />
+		<monster name="Ogre Savage" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1154" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1124" centery="1154" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1131" centery="1154" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-2" y="0" z="7" spawntime="90" />
+		<monster name="Dworc Fleshhunter" x="-1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1154" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-2" y="-2" z="7" spawntime="90" />
+		<monster name="Terror Bird" x="-1" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1026" centery="1161" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1161" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1068" centery="1161" centerz="7" radius="3">
+		<monster name="Terror Bird" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1161" centerz="7" radius="3">
+		<monster name="Dworc Fleshhunter" x="-2" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1110" centery="1161" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1161" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1166" centery="1161" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1005" centery="1168" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1012" centery="1168" centerz="7" radius="3">
+		<monster name="Clomp" x="1" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1019" centery="1168" centerz="7" radius="3">
+		<monster name="Clomp" x="3" y="-3" z="7" spawntime="90" />
+		<monster name="Clomp" x="3" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1047" centery="1168" centerz="7" radius="3">
+		<monster name="Dworc Fleshhunter" x="0" y="-2" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1168" centerz="7" radius="3">
+		<monster name="Terror Bird" x="1" y="1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1089" centery="1168" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="-2" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1131" centery="1168" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="1" y="-3" z="7" spawntime="90" />
+		<monster name="Dworc Voodoomaster" x="3" y="-3" z="7" spawntime="90" />
+		<monster name="Dworc Fleshhunter" x="2" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1138" centery="1168" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1168" centerz="7" radius="3">
+		<monster name="Clomp" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1168" centerz="7" radius="3">
+		<monster name="Dworc Fleshhunter" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1172" centery="1174" centerz="7" radius="1">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1089" centery="1175" centerz="7" radius="3">
+		<monster name="Terror Bird" x="-2" y="-2" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="-2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1096" centery="1175" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1131" centery="1175" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1175" centerz="7" radius="3">
+		<monster name="Clomp" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1175" centerz="7" radius="1">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1175" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="3" y="1" z="7" spawntime="90" />
+		<monster name="Clomp" x="-2" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1166" centery="1175" centerz="7" radius="3">
+		<monster name="Terror Bird" x="0" y="0" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="-1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1182" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1182" centerz="7" radius="3">
+		<monster name="Dworc Fleshhunter" x="-2" y="-3" z="7" spawntime="90" />
+		<monster name="Ogre Brute" x="-2" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1182" centerz="7" radius="3">
+		<monster name="Ogre Shaman" x="1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1110" centery="1182" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1152" centery="1182" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-2" y="3" z="7" spawntime="90" />
+		<monster name="Clomp" x="0" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1159" centery="1182" centerz="7" radius="3">
+		<monster name="Ogre Savage" x="-1" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1139" centery="1184" centerz="7" radius="1">
+		<monster name="Clomp" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1054" centery="1189" centerz="7" radius="3">
+		<monster name="Terror Bird" x="2" y="-3" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="1" y="-2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1061" centery="1189" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="-3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1068" centery="1189" centerz="7" radius="3">
+		<monster name="Terror Bird" x="0" y="1" z="7" spawntime="90" />
+		<monster name="Ogre Shaman" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1075" centery="1189" centerz="7" radius="3">
+		<monster name="Dragon Lord" x="-3" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1189" centerz="7" radius="3">
+		<monster name="Terror Bird" x="2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1103" centery="1189" centerz="7" radius="3">
+		<monster name="Dragon" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1124" centery="1189" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="2" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1145" centery="1189" centerz="7" radius="3">
+		<monster name="Ogre Brute" x="0" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1196" centerz="7" radius="3">
+		<monster name="Dragon" x="3" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1082" centery="1203" centerz="7" radius="3">
+		<monster name="Dragon Lord" x="-2" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1117" centery="1203" centerz="7" radius="3">
+		<monster name="Dragon" x="3" y="-3" z="7" spawntime="90" />
+	</monster>
+</monsters>

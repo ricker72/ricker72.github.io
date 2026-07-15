@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ricker72 · Proyectos Futuristas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #050505;
+      --surface: rgba(15, 15, 15, 0.85);
+      --border: rgba(212, 175, 55, 0.3);
+      --gold-light: #FFD700;
+      --gold-deep: #B8860B;
+      --gold-accent: #D4AF37;
+      --text: #e0e0e0;
+      --text-muted: #a0a0a0;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    .shooting-star {
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(255,215,0,0.8), transparent);
+      border-radius: 50%;
+      transform: rotate(-45deg);
+      animation: shoot 4s linear infinite;
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .shooting-star:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .shooting-star:nth-child(2) { left: 30%; animation-delay: 1.5s; }
+    .shooting-star:nth-child(3) { left: 70%; animation-delay: 2.8s; }
+    .shooting-star:nth-child(4) { left: 90%; animation-delay: 3.5s; }
+    @keyframes shoot {
+      0% { opacity: 0; transform: translateX(0) translateY(0) rotate(-45deg); }
+      5% { opacity: 1; }
+      15% { opacity: 0; transform: translateX(-300px) translateY(300px) rotate(-45deg); }
+      100% { opacity: 0; transform: translateX(-300px) translateY(300px) rotate(-45deg); }
+    }
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      box-shadow: 0 0 20px var(--gold-light);
+      transition: transform 0.04s linear;
+      mix-blend-mode: screen;
+    }
+    .content { position: relative; z-index: 1; backdrop-filter: blur(1px); }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.3s, text-shadow 0.3s;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    nav a:hover { color: var(--gold-light); text-shadow: 0 0 15px var(--gold-accent); }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFD700, #DAA520, #B8860B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px rgba(255,215,0,0.3));
+      margin-bottom: 1.5rem;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      max-width: 700px;
+      border-left: 3px solid var(--gold-accent);
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+    .badges img { height: 28px; border: none; filter: drop-shadow(0 0 4px rgba(255,215,0,0.3)); transition: transform 0.2s; }
+    .badges img:hover { transform: scale(1.05); }
+    section { padding: 6rem 2rem; max-width: 1300px; margin: 0 auto; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 3rem; margin-top: 2rem; }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2.2rem;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      will-change: transform;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      padding: 1.5px;
+      background: linear-gradient(135deg, var(--gold-light), transparent, var(--gold-deep));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+    .project-card:hover::before { opacity: 1; }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(255,215,0,0.15), inset 0 0 40px rgba(255,215,0,0.05); }
+    .project-card h3 { font-size: 2rem; color: var(--gold-light); margin-bottom: 0.5rem; font-weight: 700; pointer-events: none; }
+    .lang-badge {
+      display: inline-block;
+      background: rgba(255,215,0,0.1);
+      color: var(--gold-light);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      margin: 0.8rem 0;
+      font-weight: 600;
+      border: 1px solid var(--gold-accent);
+      letter-spacing: 0.5px;
+      width: fit-content;
+      pointer-events: none;
+    }
+    .project-card p { color: var(--text-muted); line-height: 1.7; margin: 1.2rem 0; flex-grow: 1; pointer-events: none; }
+    .stats { display: flex; gap: 2rem; margin: 1.5rem 0; color: var(--text-muted); pointer-events: none; }
+    .stat { display: flex; align-items: center; gap: 0.4rem; }
+    .btn-view {
+      background: transparent;
+      border: 1px solid var(--gold-accent);
+      color: var(--gold-light);
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      align-self: flex-start;
+      pointer-events: auto;
+    }
+    .btn-view:hover { background: var(--gold-accent); color: #000; box-shadow: 0 0 25px var(--gold-accent); border-color: var(--gold-accent); }
+    
+    /* Estilo del README tipo GitHub oscuro */
+    .readme-content {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: none;
+      max-height: 420px;
+      overflow-y: auto;
+      font-family: 'Courier New', 'Consolas', monospace;
+      color: #c9d1d9;
+      background: #0d1117;
+      border-radius: 12px;
+      line-height: 1.6;
+      word-break: break-word;
+      pointer-events: auto;
+    }
+    .readme-content.active { display: block; animation: fadeSlide 0.5s ease; }
+    @keyframes fadeSlide { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    .readme-content a { color: #58a6ff; }
+    .readme-content h1, .readme-content h2, .readme-content h3 { color: #f0f6fc; margin-top: 1rem; }
+    .readme-content code {
+      background: #161b22;
+      padding: 0.2em 0.4em;
+      border-radius: 6px;
+      font-size: 85%;
+    }
+    .readme-content pre {
+      background: #161b22;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .readme-content table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    .readme-content th, .readme-content td {
+      border: 1px solid #30363d;
+      padding: 0.5rem 1rem;
+    }
+    .readme-content img { max-width: 100%; }
+
+    footer { text-align: center; padding: 2rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 5rem; }
+    .neon-copyright {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      animation: neonPulse 3s ease-in-out infinite;
+      background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 10px #FFD700);
+    }
+    @keyframes neonPulse {
+      0% { opacity: 0.4; transform: scale(0.95); filter: drop-shadow(0 0 5px #B8860B); letter-spacing: 1px; }
+      25% { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 20px #FFD700); letter-spacing: 3px; }
+      50% { opacity: 0.9; transform: scale(1); filter: drop-shadow(0 0 15px #DAA520); letter-spacing: 2px; }
+      75% { opacity: 1; transform: scale(1.08); filter: drop-shadow(0 0 25px #FFD700); letter-spacing: 2.5px; }
+      100% { opacity: 0.4; transform: scale(0.95); filter: drop-shadow(0 0 5px #B8860B); letter-spacing: 1px; }
+    }
+    .loading-spinner { border: 2px solid rgba(255,215,0,0.2); border-top: 2px solid var(--gold-light); border-radius: 50%; width: 30px; height: 30px; animation: spin 0.8s linear infinite; margin: 2rem auto; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="shooting-star"></div><div class="shooting-star"></div><div class="shooting-star"></div><div class="shooting-star"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+  <div class="content">
+    <nav>
+      <a href="#home">Inicio</a>
+      <a href="#projects">Proyectos</a>
+    </nav>
+    <section id="home" class="hero">
+      <h1 data-aos="fade-up">Ricker72</h1>
+      <p data-aos="fade-up" data-aos-delay="200">Automatización, NPCs y servidores. Tecnología de vanguardia con visión futurista.</p>
+      <div class="badges" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+        <img src="https://img.shields.io/badge/Android-34A853?style=for-the-badge&logo=android&logoColor=white" alt="Android">
+        <img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code">
+        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
+        <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++">
+        <img src="https://img.shields.io/badge/CSharp-68217A?style=for-the-badge&logo=csharp&logoColor=white" alt="C#">
+        <img src="https://img.shields.io/badge/Lua-000080?style=for-the-badge&logo=lua&logoColor=white" alt="Lua">
+        <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON">
+        <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+      </div>
+    </section>
+    <section id="projects">
+      <div class="projects-grid" id="projectsContainer">
+        <div class="loading-spinner"></div>
+      </div>
+    </section>
+    <footer>
+      <p><span class="neon-copyright">© 2026 Ricker72</span></p>
+    </footer>
+  </div>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 90, "density": { "enable": true, "value_area": 900 } },
+        "color": { "value": ["#FFD700", "#DAA520", "#B8860B", "#F0E68C"] },
+        "shape": { "type": "star", "stroke": { "width": 1, "color": "#FFD700" }, "polygon": { "nb_sides": 5 } },
+        "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.2, "sync": false } },
+        "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1, "sync": false } },
+        "line_linked": { "enable": true, "distance": 140, "color": "#D4AF37", "opacity": 0.25, "width": 1.2 },
+        "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "attract": { "enable": true, "rotateX": 600, "rotateY": 1200 } }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+        "modes": { "grab": { "distance": 180, "line_linked": { "opacity": 0.6 } }, "push": { "particles_nb": 6 } }
+      },
+      "retina_detect": true
+    });
+    const trail = document.getElementById('cursorTrail');
+    document.addEventListener('mousemove', (e) => { trail.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`; });
+    function applyTilt(card) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 12;
+        const rotateY = (centerX - x) / 12;
+        card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) translateY(0)'; });
+    }
+    const repoUrls = {
+      "Npc-Maker": "https://github.com/ricker72/Npc-Maker",
+      "agente_rme": "https://github.com/ricker72/agente_rme",
+      "Naxed-Server-Revamp-15-": "https://github.com/ricker72/Naxed-Server-Revamp-15-"
+    };
+    const repos = [
+      { name: "Npc-Maker", fullName: "ricker72/Npc-Maker" },
+      { name: "agente_rme", fullName: "ricker72/agente_rme" },
+      { name: "Naxed-Server-Revamp-15-", fullName: "ricker72/Naxed-Server-Revamp-15-" }
+    ];
+    const container = document.getElementById('projectsContainer');
+    async function fetchRepoData(repoFullName) {
+      const res = await fetch(`https://api.github.com/repos/${repoFullName}`);
+      if (!res.ok) throw new Error('Repo no disponible');
+      return await res.json();
+    }
+    async function fetchReadme(repoFullName) {
+      const res = await fetch(`https://api.github.com/repos/${repoFullName}/readme`);
+      if (!res.ok) return null;
+      const data = await res.json();
+      // Decodificar base64 a UTF-8 correctamente
+      const binaryString = atob(data.content.replace(/\n/g, ''));
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      return new TextDecoder('utf-8').decode(bytes);
+    }
+    function createCard(repoData, readmeContent) {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.setAttribute('data-aos', 'fade-up');
+      const lang = repoData.language || 'N/A';
+      const langColors = {
+        "TypeScript": "#3178c6", "JavaScript": "#f1e05a", "Python": "#3572A5",
+        "Lua": "#000080", "C++": "#f34b7d", "C#": "#178600", "Java": "#b07219"
+      };
+      const langColor = langColors[lang] || '#D4AF37';
+      const repoUrl = repoUrls[repoData.name] || repoData.html_url;
+
+      card.innerHTML = `
+        <h3>${repoData.name}</h3>
+        <span class="lang-badge" style="background: ${langColor}20; color: ${langColor}; border-color: ${langColor};">${lang}</span>
+        <p>${repoData.description || 'Proyecto sin descripción pública.'}</p>
+        <div class="stats">
+          <span class="stat">⭐ ${repoData.stargazers_count}</span>
+          <span class="stat">🍴 ${repoData.forks_count}</span>
+          <span class="stat">🔄 ${new Date(repoData.updated_at).toLocaleDateString()}</span>
+        </div>
+        <button class="btn-view toggle-readme">📜 Ver README</button>
+        <div class="readme-content"></div>
+      `;
+
+      card.addEventListener('click', (e) => {
+        if (e.target.classList.contains('toggle-readme')) return;
+        window.open(repoUrl, '_blank', 'noopener,noreferrer');
+      });
+
+      const readmeDiv = card.querySelector('.readme-content');
+      if (readmeContent) {
+        // Configurar marked para GitHub Flavored Markdown
+        marked.setOptions({
+          gfm: true,
+          breaks: true,
+          headerIds: false,
+          mangle: false
+        });
+        readmeDiv.innerHTML = marked.parse(readmeContent);
+      } else {
+        readmeDiv.innerHTML = '<p style="color:#ff9966;">⚠️ README no encontrado.</p>';
+      }
+
+      const toggleBtn = card.querySelector('.toggle-readme');
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        readmeDiv.classList.toggle('active');
+        toggleBtn.textContent = readmeDiv.classList.contains('active') ? '📕 Ocultar README' : '📜 Ver README';
+      });
+
+      applyTilt(card);
+      return card;
+    }
+    async function loadProjects() {
+      container.innerHTML = '';
+      for (const repo of repos) {
+        try {
+          const data = await fetchRepoData(repo.fullName);
+          const readme = await fetchReadme(repo.fullName);
+          const card = createCard(data, readme);
+          container.appendChild(card);
+        } catch (err) {
+          const errorCard = document.createElement('div');
+          errorCard.className = 'project-card';
+          errorCard.innerHTML = `<h3>${repo.name}</h3><p style="color:#ff5555;">Error: ${err.message}</p>`;
+          container.appendChild(errorCard);
+        }
+      }
+      AOS.refresh();
+    }
+    window.addEventListener('DOMContentLoaded', loadProjects);
+  </script>
+</body>
+</html>
