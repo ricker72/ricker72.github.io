@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<npcs>
+	<npc centerx="1014" centery="1021" centerz="4" radius="1">
+		<npc name="Garamond" x="0" y="0" z="4" spawntime="60" />
+	</npc>
+	<npc centerx="1026" centery="1021" centerz="4" radius="1">
+		<npc name="Ser Tybald" x="0" y="0" z="4" spawntime="60" />
+	</npc>
+	<npc centerx="1026" centery="1036" centerz="4" radius="1">
+		<npc name="Mr Morris" x="0" y="0" z="4" spawntime="60" />
+	</npc>
+	<npc centerx="1012" centery="1037" centerz="4" radius="1">
+		<npc name="Ambassador Manop" x="0" y="0" z="4" spawntime="60" />
+	</npc>
+	<npc centerx="1011" centery="1020" centerz="5" radius="1">
+		<npc name="Richard" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="1026" centery="1021" centerz="5" radius="1">
+		<npc name="Plunderpurse" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="1012" centery="1039" centerz="5" radius="1">
+		<npc name="Hamish" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="1025" centery="1039" centerz="5" radius="1">
+		<npc name="Inigo" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="1017" centery="1020" centerz="6" radius="1">
+		<npc name="Wentworth" x="0" y="0" z="6" spawntime="60" />
+	</npc>
+	<npc centerx="1019" centery="1031" centerz="6" radius="1">
+		<npc name="Oressa" x="0" y="0" z="6" spawntime="60" />
+	</npc>
+</npcs>

@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<monsters>
+	<monster centerx="998" centery="1009" centerz="6" radius="1">
+		<monster name="Troll-Trained Salamander" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1035" centery="1012" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1038" centery="1014" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1046" centery="1020" centerz="6" radius="3">
+		<monster name="Rabbit" x="-3" y="2" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1041" centery="1022" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1043" centery="1029" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1044" centery="1036" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1045" centery="1038" centerz="6" radius="1">
+		<monster name="Rabbit" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="998" centery="1040" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1043" centery="1043" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1037" centery="1046" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1007" centery="1047" centerz="6" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1034" centery="1047" centerz="6" radius="1">
+		<monster name="Troll-Trained Salamander" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1029" centery="1048" centerz="6" radius="1">
+		<monster name="Rabbit" x="0" y="0" z="6" spawntime="90" />
+	</monster>
+	<monster centerx="1043" centery="1010" centerz="7" radius="1">
+		<monster name="Deer" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1004" centery="1013" centerz="7" radius="3">
+		<monster name="Mountain Troll" x="0" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1018" centery="1013" centerz="7" radius="3">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+		<monster name="Mountain Troll" x="1" y="2" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1032" centery="1013" centerz="7" radius="3">
+		<monster name="Mountain Troll" x="0" y="-2" z="7" spawntime="90" />
+		<monster name="Troll-Trained Salamander" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1031" centery="1017" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1025" centery="1018" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1033" centery="1021" centerz="7" radius="1">
+		<monster name="Meadow Strider" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1036" centery="1023" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1041" centery="1024" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1017" centery="1025" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1022" centery="1025" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1006" centery="1027" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1009" centery="1031" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1004" centery="1034" centerz="7" radius="3">
+		<monster name="Troll-Trained Salamander" x="3" y="-1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1008" centery="1036" centerz="7" radius="1">
+		<monster name="Troll-Trained Salamander" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1034" centery="1036" centerz="7" radius="1">
+		<monster name="Troll-Trained Salamander" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1029" centery="1037" centerz="7" radius="1">
+		<monster name="Meadow Strider" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1004" centery="1038" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="997" centery="1041" centerz="7" radius="3" />
+	<monster centerx="1025" centery="1041" centerz="7" radius="3">
+		<monster name="Mountain Troll" x="-1" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1039" centery="1041" centerz="7" radius="3">
+		<monster name="Troll-Trained Salamander" x="-3" y="0" z="7" spawntime="90" />
+		<monster name="Meadow Strider" x="-1" y="0" z="7" spawntime="90" />
+		<monster name="Mountain Troll" x="-3" y="3" z="7" spawntime="90" />
+		<monster name="Troll-Trained Salamander" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1046" centery="1041" centerz="7" radius="3">
+		<monster name="Dawnfly" x="-3" y="-3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1020" centery="1045" centerz="7" radius="1">
+		<monster name="Troll-Trained Salamander" x="0" y="0" z="7" spawntime="90" />
+		<monster name="Mountain Troll" x="0" y="1" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="1009" centery="1047" centerz="7" radius="1">
+		<monster name="Mountain Troll" x="0" y="0" z="7" spawntime="90" />
+	</monster>
+</monsters>
