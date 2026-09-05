@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Local, versioned NPC bubble catalog for Ingame Simulation.
+  Allowed values: none, D, Q, T, QT.
+  NPCs omitted from this file render without a bubble.
+-->
+<npc-bubbles>
+  <npc name="Atrad" bubble="T" />
+  <npc name="Black Bert" bubble="QT" />
+  <npc name="Cael" bubble="QT" />
+  <npc name="Carlos" bubble="QT" />
+  <npc name="Esrik" bubble="T" />
+  <npc name="Gnomally" bubble="QT" />
+  <npc name="Grizzly Adams" bubble="QT" />
+  <npc name="Harog" bubble="T" />
+  <npc name="Pompan" bubble="T" />
+</npc-bubbles>
