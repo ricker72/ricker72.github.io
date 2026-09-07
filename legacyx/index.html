@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LegacyX Editor — Editor Oficial de Mapas OpenTibia | @Ricker72</title>
+  <meta name="description" content="LegacyX Editor: el editor de mapas OpenTibia que supera a RME. 100% C# / .NET 10, Ingame Simulation + God Mode, NPC Maker, Spell Creator, Live Collaboration. Creado exclusivamente por @Ricker72.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #050508;
+      --bg-card: #0c0c12;
+      --bg-elevated: #12121a;
+      --gold: #ffd700;
+      --gold-soft: #e6c200;
+      --gold-glow: rgba(255, 215, 0, 0.35);
+      --gold-dim: rgba(255, 215, 0, 0.12);
+      --cyan: #00e5ff;
+      --cyan-glow: rgba(0, 229, 255, 0.25);
+      --purple: #b388ff;
+      --text: #e8e6e3;
+      --text-muted: #9a9690;
+      --border: rgba(255, 215, 0, 0.18);
+      --success: #00e676;
+      --radius: 16px;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Rajdhani', sans-serif;
+      --font-mono: 'Share Tech Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-deep);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Particles canvas */
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      background: rgba(5, 5, 8, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.35s ease;
+    }
+    nav.scrolled {
+      padding: 0.65rem 0;
+      background: rgba(5, 5, 8, 0.92);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo span { color: var(--text); font-weight: 500; }
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      transition: color 0.25s, background 0.25s, box-shadow 0.25s;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+      background: var(--gold-dim);
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), #c9a000) !important;
+      color: #0a0a0c !important;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover {
+      box-shadow: 0 0 28px var(--gold-glow) !important;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 0 4rem;
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-visual { order: -1; }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      background: var(--gold-dim);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 10px var(--success);
+      animation: pulse 1.8s ease infinite;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+    .hero-title .line1 { display: block; color: var(--text); }
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(90deg, var(--gold), #fff3a0, var(--gold), #ffb300);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 4s linear infinite;
+      filter: drop-shadow(0 0 24px var(--gold-glow));
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    @media (max-width: 900px) { .hero-sub { margin-left: auto; margin-right: auto; } }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      animation: fadeUp 1.1s 0.3s ease both;
+    }
+    @media (max-width: 900px) { .hero-actions { justify-content: center; } }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.9rem 1.6rem;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #c9a000);
+      color: #0a0a0c;
+      box-shadow: 0 4px 24px var(--gold-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 36px var(--gold-glow);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--border);
+    }
+    .btn-ghost:hover {
+      background: var(--gold-dim);
+      box-shadow: 0 0 24px var(--gold-glow);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      margin-top: 2.75rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 1.2s 0.4s ease both;
+    }
+    @media (max-width: 900px) { .hero-stats { justify-content: center; } }
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+    }
+    .stat span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Hero visual card */
+    .hero-visual {
+      position: relative;
+      animation: fadeUp 1s 0.25s ease both;
+    }
+    .visual-card {
+      background: linear-gradient(145deg, var(--bg-elevated), var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 0 0 1px rgba(255,215,0,0.06), 0 24px 64px rgba(0,0,0,0.5), 0 0 80px var(--gold-dim);
+      position: relative;
+      overflow: hidden;
+    }
+    .visual-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, var(--gold-dim), transparent 30%);
+      animation: spin 12s linear infinite;
+      opacity: 0.4;
+    }
+    .visual-inner {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-deep);
+      border-radius: 14px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,215,0,0.1);
+    }
+    .terminal-header {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.r { background: #ff5f57; }
+    .dot.y { background: #febc2e; }
+    .dot.g { background: #28c840; }
+    .terminal-body {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .terminal-body .cmd { color: var(--cyan); }
+    .terminal-body .ok { color: var(--success); }
+    .terminal-body .gold { color: var(--gold); }
+    .terminal-body .muted { color: #666; }
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: var(--gold);
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+      margin-left: 2px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5.5rem 0;
+      position: relative;
+    }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.9rem, 4vw, 2.75rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .section-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text p {
+      margin-bottom: 1.1rem;
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .about-text strong { color: var(--text); }
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .pill {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--gold-soft);
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.15rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .feature-list li:hover {
+      border-color: rgba(255,215,0,0.4);
+      box-shadow: 0 0 28px var(--gold-dim);
+      transform: translateX(4px);
+    }
+    .feature-list .icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .feature-list strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 0.15rem;
+    }
+    .feature-list span {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* CORE */
+    .core-banner {
+      background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(0,229,255,0.05));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 2.25rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .core-banner::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .core-banner h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .core-banner p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 48rem;
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) { .cards-3 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,215,0,0.45);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 40px var(--gold-dim);
+    }
+    .card .card-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold-dim), rgba(0,229,255,0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.6rem;
+    }
+    .card p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* SIM + GOD MODE */
+    .sim-section {
+      background: linear-gradient(180deg, transparent, rgba(0,229,255,0.03), transparent);
+    }
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 800px) { .sim-grid { grid-template-columns: 1fr; } }
+
+    .sim-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative;
+    }
+    .sim-panel.god {
+      border-color: rgba(179, 136, 255, 0.35);
+      box-shadow: 0 0 40px rgba(179, 136, 255, 0.08);
+    }
+    .sim-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .sim-panel .tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: var(--gold-dim);
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .sim-panel.god .tag {
+      background: rgba(179,136,255,0.15);
+      color: var(--purple);
+    }
+    .sim-panel > p {
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      font-size: 1.02rem;
+    }
+    .can-do {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .can-do li {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      font-size: 0.98rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .can-do li::before {
+      content: '▸';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .sim-panel.god .can-do li::before { color: var(--purple); }
+
+    /* FEATURES GRID */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .feat-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.5rem;
+      transition: all 0.3s;
+    }
+    .feat-item:hover {
+      border-color: rgba(255,215,0,0.4);
+      box-shadow: 0 0 30px var(--gold-dim);
+      transform: translateY(-3px);
+    }
+    .feat-item .emoji { font-size: 1.5rem; margin-bottom: 0.6rem; display: block; }
+    .feat-item h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+    .feat-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .status-ok {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--success);
+      letter-spacing: 0.04em;
+    }
+
+    /* CREATOR */
+    .creator-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      background: linear-gradient(145deg, var(--bg-elevated), var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 0 60px var(--gold-dim);
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 700px) {
+      .creator-card { grid-template-columns: 1fr; text-align: center; }
+    }
+    .creator-avatar {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #c9a000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #0a0a0c;
+      box-shadow: 0 0 40px var(--gold-glow);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .creator-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      opacity: 0.5;
+      animation: pulseRing 2.5s ease infinite;
+    }
+    .creator-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .creator-info .handle {
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .creator-info p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+      max-width: 36rem;
+    }
+    .creator-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+    }
+    @media (max-width: 700px) { .creator-tags { justify-content: center; } }
+    .creator-tags span {
+      padding: 0.35rem 0.8rem;
+      border-radius: 8px;
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .creator-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 700px) { .creator-links { justify-content: center; } }
+
+    /* DOWNLOAD CTA */
+    .cta-box {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(160deg, rgba(255,215,0,0.1), rgba(0,229,255,0.05));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, var(--gold-glow), transparent 65%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .cta-box h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .cta-box p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    footer .logo { justify-content: center; margin-bottom: 1rem; }
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(1); opacity: 0.5; }
+      70% { transform: scale(1.12); opacity: 0; }
+      100% { transform: scale(1.12); opacity: 0; }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile nav */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    @media (max-width: 760px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: rgba(5,5,8,0.97);
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo" title="Volver al Hub Ricker72">← Hub · Legacy<span>X</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Qué es</a></li>
+        <li><a href="#core">Core</a></li>
+        <li><a href="#simulation">Sim + God Mode</a></li>
+        <li><a href="#features">Funciones</a></li>
+        <li><a href="#creator">Creador</a></li>
+        <li><a href="#download" class="nav-cta">Descargar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          v1.9.8 · Tibia 10.98 · Certified
+        </div>
+        <h1 class="hero-title">
+          <span class="line1">El editor que</span>
+          <span class="line2">superó a RME</span>
+        </h1>
+        <p class="hero-sub">
+          LegacyX Editor es el editor de mapas OpenTibia de nueva generación:
+          paridad total con Remere's Map Editor + emulador in-game embebido,
+          God Mode, NPC Maker, Spell Creator y colaboración en vivo —
+          todo en un único runtime C# / .NET 10.
+        </p>
+        <div class="hero-actions">
+          <a href="https://github.com/ricker72/ricker72.github.io/releases" class="btn btn-primary" target="_blank" rel="noopener">
+            ↓ Descargar última build
+          </a>
+          <a href="#simulation" class="btn btn-ghost">Ver Sim + God Mode</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>100% C#</strong>
+            <span>.NET 10 · WinForms</span>
+          </div>
+          <div class="stat">
+            <strong>Sim+GOD</strong>
+            <span>OTClient embebido</span>
+          </div>
+          <div class="stat">
+            <strong>RME Parity</strong>
+            <span>P0 / P1 Certified</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="visual-inner">
+            <div class="terminal-header">
+              <span class="dot r"></span>
+              <span class="dot y"></span>
+              <span class="dot g"></span>
+            </div>
+            <div class="terminal-body">
+              <div><span class="muted">// LegacyX Editor · runtime único</span></div>
+              <div><span class="cmd">$</span> load engine --core=otclient</div>
+              <div class="ok">✓ Ingame Simulation online</div>
+              <div class="ok">✓ God Mode ready</div>
+              <div class="ok">✓ Brush Engine · OTBM certified</div>
+              <div><span class="cmd">$</span> status --parity</div>
+              <div class="gold">P0/P1 Certified · surpassed RME</div>
+              <div><span class="cmd">$</span> author</div>
+              <div class="gold">@Ricker72 · 100% C# · no C++</div>
+              <div><span class="cursor-blink"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label reveal">Sobre el proyecto</div>
+      <h2 class="section-title reveal">Qué es LegacyX Editor</h2>
+      <p class="section-desc reveal">
+        Un editor de mapas para servidores OpenTibia (Tibia 10.98) diseñado para
+        mapear, simular y validar contenido con la misma fidelidad que el cliente real.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            <strong>LegacyX Editor</strong> es el sucesor evolutivo de los editores clásicos de mapas OT.
+            Mantiene <strong>paridad certificada</strong> con Remere's Map Editor (RME) en comportamiento clásico
+            (OTBM, brushes, palettes, ground/wall/doodad, auto-border) y añade una capa de
+            <strong>emulación in-game</strong> que ningún otro editor ofrece de forma nativa.
+          </p>
+          <p>
+            Está construido <strong>exclusivamente en C# / .NET 10 / Windows Forms</strong>.
+            No hay segundo runtime, no hay C++ en producción, no hay IDs inventados.
+            La única autoridad externa de comportamiento clásico es el código fuente de RME
+            (<code style="color:var(--gold);font-family:var(--font-mono);font-size:0.9em">hampusborgos/rme</code>).
+          </p>
+          <p>
+            El render usa <strong>GDI+</strong> y <strong>D3D11 / Texture2DArray</strong>.
+            El motor de brushes respeta la ruta de transacciones única de RME, garantizando
+            roundtrip OTBM + XML sin romper materiales oficiales.
+          </p>
+          <div class="tech-pills">
+            <span class="pill">C# / .NET 10</span>
+            <span class="pill">Windows Forms</span>
+            <span class="pill">D3D11 + GDI+</span>
+            <span class="pill">Tibia 10.98</span>
+            <span class="pill">OTBM / OTB / DAT / SPR</span>
+            <span class="pill">OTClient framework</span>
+          </div>
+        </div>
+        <ul class="feature-list reveal">
+          <li>
+            <span class="icon">🗺️</span>
+            <div>
+              <strong>Paridad RME certificada</strong>
+              <span>P0 / P1: Client DAT/SPR/OTB/XML, OTBM roundtrip, Ground, AutoBorder, Wall, Doodad, Palettes + RAW.</span>
+            </div>
+          </li>
+          <li>
+            <span class="icon">🎮</span>
+            <div>
+              <strong>Ingame Simulation + God Mode</strong>
+              <span>Emulador basado en OTClient src/client + framework, embebido en el propio editor.</span>
+            </div>
+          </li>
+          <li>
+            <span class="icon">🧙</span>
+            <div>
+              <strong>NPC Maker · Spell Creator</strong>
+              <span>Creación de NPCs y hechizos integrados, sin salir del flujo de mapeo.</span>
+            </div>
+          </li>
+          <li>
+            <span class="icon">🌐</span>
+            <div>
+              <strong>Live Collaboration · Planner</strong>
+              <span>Trabajo en equipo en tiempo real y herramientas de planificación de mapas.</span>
+            </div>
+          </li>
+          <li>
+            <span class="icon">🎨</span>
+            <div>
+              <strong>Theme & Language</strong>
+              <span>Tema oscuro completo (ES / EN / PT) y UI adaptativa sin popups blancos.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE -->
+  <section id="core">
+    <div class="container">
+      <div class="section-label reveal">Arquitectura</div>
+      <h2 class="section-title reveal">El core en el que está basado</h2>
+      <p class="section-desc reveal">
+        Un solo runtime. Una sola autoridad clásica. Una capa de simulación moderna.
+      </p>
+
+      <div class="core-banner reveal">
+        <h3>RME como autoridad + OTClient como motor de simulación</h3>
+        <p>
+          El comportamiento clásico (brushes, OTBM, items, flags) se valida y replica a partir del código fuente de
+          <strong>Remere's Map Editor</strong> (commit de referencia da7152e). Las mejoras propietarias
+          <strong>nunca rompen</strong> OTBM, materiales oficiales ni la ruta de transacciones del Brush Engine.
+          La simulación in-game se apoya en el framework de <strong>OTClient</strong>
+          (<code style="color:var(--cyan);font-family:var(--font-mono);font-size:0.9em">src/client + framework</code>
+          (PlayerWalker, IngameMovementRules, LightView, DAT 10.98 ThingFlagAttr, DrawPool/Shader GLSL→HLSL, etc.),
+          todo reimplementado y embebido en C#.
+        </p>
+      </div>
+
+      <div class="cards-3">
+        <div class="card reveal">
+          <div class="card-icon">⚙️</div>
+          <h3>Runtime único</h3>
+          <p>
+            100% C# / .NET 10 / Windows Forms. Sin segundo proceso, sin C++ en producción.
+            Un solo proceso, un solo stack de memoria, máxima controlabilidad.
+          </p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">📐</div>
+          <h3>Brush Engine</h3>
+          <p>
+            Ruta de transacciones única alineada con RME. Ground, AutoBorder, Wall, Doodad
+            y RAW (577) certificados. Roundtrip OTBM + XML garantizado.
+          </p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🖥️</div>
+          <h3>Render dual</h3>
+          <p>
+            GDI+ para compatibilidad y D3D11 con Texture2DArray para rendimiento.
+            Palettes (7) + preview de composición de brushes con theming oscuro total.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULATION + GOD MODE -->
+  <section id="simulation" class="sim-section">
+    <div class="container">
+      <div class="section-label reveal">Diferenciador clave</div>
+      <h2 class="section-title reveal">Ingame Simulation + God Mode</h2>
+      <p class="section-desc reveal">
+        No solo editas el mapa: lo <em>vives</em> desde el editor. Simulación realista
+        del cliente + privilegios de dios para probar, validar y diseñar sin límites.
+      </p>
+
+      <div class="sim-grid">
+        <div class="sim-panel reveal">
+          <h3>Ingame Simulation <span class="tag">Sim</span></h3>
+          <p>
+            Emulador in-game basado en el cliente OTClient, embebido dentro del editor.
+            Permite recorrer el mapa con las mismas reglas de movimiento, colisiones,
+            pathfinding y visión de luz que el juego real.
+          </p>
+          <ul class="can-do">
+            <li>Cargar el mapa OTBM y explorarlo como jugador (PlayerWalker / localplayer).</li>
+            <li>Reglas de movimiento reales: BlockObject, PathFind, floor change, elevación.</li>
+            <li>LightView y sistema de iluminación estilo cliente (OTBot / framework).</li>
+            <li>Flags DAT 10.98 (ThingFlagAttr) aplicados en tiempo real.</li>
+            <li>Clock / Timer / EventDispatcher para simular el paso del tiempo y eventos.</li>
+            <li>DrawPool + shaders (GLSL→HLSL) para render coherente con el cliente.</li>
+            <li>Probar teleports, puertas, campos mágicos y cambios de floor sin servidor.</li>
+            <li>Validar spawns, densidades y flow de zonas antes de subir el mapa.</li>
+            <li>Camera picking con offset de floor para pintar y seleccionar en plantas bajas.</li>
+            <li>Certificado desde v1.8.1 — estado 🟢 Certified.</li>
+          </ul>
+        </div>
+
+        <div class="sim-panel god reveal">
+          <h3>God Mode <span class="tag">GOD</span></h3>
+          <p>
+            Capa de privilegios sobre la simulación: atraviesa obstáculos, salta floors,
+            inspecciona y manipula el entorno sin las restricciones del jugador normal.
+            Accesible desde el menú Ingame Simulation / View (Ctrl+G reservado a Go To Position, paridad RME).
+          </p>
+          <ul class="can-do">
+            <li>Activar / desactivar God Mode desde menú (sin romper atajos clásicos de RME).</li>
+            <li>Moverse libremente ignorando bloqueos de path y unpassable (estilo noclip controlado).</li>
+            <li>Ir a cualquier posición (Go To Position) y saltar entre floors al instante.</li>
+            <li>Inspeccionar items, flags y propiedades bajo el cursor en tiempo real.</li>
+            <li>Probar comportamientos de items (doors, teleports, magic fields) sin morir ni quedar atrapado.</li>
+            <li>Combinar con Live Collaboration para revisar mapas en equipo con visión “dios”.</li>
+            <li>Útil para QA de mapas, balance de hunts y diseño de dungeons complejos.</li>
+            <li>Integrado en el mismo runtime C# — sin cliente externo ni servidor de prueba.</li>
+            <li>Theming oscuro completo: diálogos, paneles y menús consistentes.</li>
+            <li>Parte del stack evolucionado: Sim + GOD + Planner + Collaboration.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-label reveal">Capacidades</div>
+      <h2 class="section-title reveal">Todo lo que puedes hacer</h2>
+      <p class="section-desc reveal">
+        Desde mapeo clásico certificado hasta herramientas avanzadas de contenido y colaboración.
+      </p>
+
+      <div class="features-grid">
+        <div class="feat-item reveal">
+          <span class="emoji">🗺️</span>
+          <h4>Map editing clásico</h4>
+          <p>Ground, walls, doodads, auto-border, RAW brush, palettes. Paridad visual y lógica con RME.</p>
+          <span class="status-ok">● Certified</span>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">📦</span>
+          <h4>OTBM + XML roundtrip</h4>
+          <p>Carga, edita y guarda mapas sin pérdida. Compatible con materiales oficiales 10.98.</p>
+          <span class="status-ok">● Certified</span>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">🔍</span>
+          <h4>Search / Jump to Item</h4>
+          <p>Diálogo 4 columnas RME-parity: Server/Client ID, Name, Types, Properties. Live filter 800ms.</p>
+          <span class="status-ok">● v1.9.8</span>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">⌨️</span>
+          <h4>Go To Position (Ctrl+G)</h4>
+          <p>Atajo clásico RME restaurado. God Mode solo por menú — sin conflictos de hotkeys.</p>
+          <span class="status-ok">● Parity</span>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">🧙</span>
+          <h4>NPC Maker</h4>
+          <p>Creación y gestión de NPCs integrada en el flujo del editor. Sin herramientas externas.</p>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">✨</span>
+          <h4>Spell Creator</h4>
+          <p>Diseño de hechizos y efectos asociados al contenido del mapa y del servidor.</p>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">📐</span>
+          <h4>Planner</h4>
+          <p>Herramientas de planificación de zonas, hunts y layout de ciudades a gran escala.</p>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">👥</span>
+          <h4>Live Collaboration</h4>
+          <p>Trabajo colaborativo en tiempo real sobre el mismo mapa. Estado Certified.</p>
+          <span class="status-ok">● Certified</span>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">🌙</span>
+          <h4>Theme & Language</h4>
+          <p>Tema 100% oscuro. Idiomas ES / EN / PT. Diálogos adaptativos sin MessageBox blancos.</p>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">🖼️</span>
+          <h4>Palette Preview</h4>
+          <p>Vista previa de composición de brushes. Edit composition con splitter estable y theming.</p>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">🌍</span>
+          <h4>Global Map Ops ×4</h4>
+          <p>Operaciones globales sobre el mapa (escalado, limpieza, transformaciones) certificadas.</p>
+          <span class="status-ok">● Certified</span>
+        </div>
+        <div class="feat-item reveal">
+          <span class="emoji">🟡</span>
+          <h4>Stairs overlay</h4>
+          <p>Tint hardcoded 459/460 (amarillo/rojo) como RME para visualizar dirección de escaleras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREATOR -->
+  <section id="creator">
+    <div class="container">
+      <div class="section-label reveal">Autor</div>
+      <h2 class="section-title reveal">Creador oficial: @Ricker72</h2>
+      <p class="section-desc reveal">
+        LegacyX Editor está crafted exclusivamente por una sola persona.
+      </p>
+
+      <div class="creator-card reveal">
+        <div class="creator-avatar">R</div>
+        <div class="creator-info">
+          <h3>Reymundo</h3>
+          <div class="handle">@Ricker · @Ricker72</div>
+          <p>
+            Software Developer · OpenTibia Developer · AI Builder.
+            Programador full-stack apasionado por la IA local (Ollama, MCP), automatización
+            y herramientas para la comunidad OpenTibia.
+          </p>
+          <p>
+            Conocido en la comunidad como <strong>@Ricker</strong>. Ha contribuido en proyectos de
+            servidores OpenTibia, bots Android, aplicaciones Windows, sistemas multiagente con IA
+            (Agente_RME) y generación de contenido OT compatible con RME, Canary y TFS.
+          </p>
+          <div class="creator-tags">
+            <span>OpenTibia</span>
+            <span>C# / .NET</span>
+            <span>IA local</span>
+            <span>Automatización</span>
+            <span>Map tools</span>
+            <span>NPC Maker</span>
+            <span>Agente_RME</span>
+          </div>
+          <p style="font-size:0.95rem;color:var(--text-muted);margin-bottom:0.5rem;">
+            Filosofía del proyecto: <em>“No second runtime · No C++ in production · No invented IDs · No vibe coding.”</em>
+            RME es la única autoridad externa de comportamiento clásico.
+          </p>
+          <div class="creator-links">
+            <a href="https://github.com/ricker72" class="btn btn-primary" target="_blank" rel="noopener">
+              GitHub · ricker72
+            </a>
+            <a href="https://github.com/ricker72/ricker72.github.io" class="btn btn-ghost" target="_blank" rel="noopener">
+              Releases & Web Hub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download">
+    <div class="container">
+      <div class="cta-box reveal">
+        <h2>Listo para mapear a otro nivel</h2>
+        <p>
+          Descarga la última build de LegacyX Editor, revisa las release notes
+          y únete al estándar evolucionado de editores OpenTibia.
+        </p>
+        <div class="cta-actions">
+          <a href="https://github.com/ricker72/ricker72.github.io/releases" class="btn btn-primary" target="_blank" rel="noopener">
+            Descargar desde GitHub Releases
+          </a>
+          <a href="https://github.com/ricker72" class="btn btn-ghost" target="_blank" rel="noopener">
+            Perfil @Ricker72
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="../index.html" class="logo">Legacy<span>X</span> Editor</a>
+      <p>
+        Crafted exclusively by <a href="https://github.com/ricker72" target="_blank" rel="noopener">@Ricker72</a>
+        · 100% C# / .NET 10 · Tibia 10.98
+      </p>
+      <p style="margin-top:0.5rem;font-size:0.85rem;">
+        RME (hampusborgos/rme) es la autoridad de comportamiento clásico.
+        Proprietary enhancements never break OTBM.
+      </p>
+      <p style="margin-top:1rem;">
+        <a href="../index.html" style="color:var(--gold);">← Volver al Hub Ricker72</a>
+      </p>
+      <p style="margin-top:1.25rem;font-size:0.8rem;opacity:0.7;">
+        © 2026 LegacyX Editor · Parte de ricker72.github.io
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => io.observe(el));
+
+    // Particles
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const COUNT = Math.min(90, Math.floor((w * h) / 18000));
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.6 + 0.4,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        a: Math.random() * 0.5 + 0.15
+      });
+    }
+
+    // Occasional shooting star
+    let stars = [];
+    function spawnStar() {
+      if (Math.random() > 0.985) {
+        stars.push({
+          x: Math.random() * w,
+          y: Math.random() * h * 0.4,
+          len: 40 + Math.random() * 60,
+          speed: 6 + Math.random() * 8,
+          life: 1
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+
+      // soft vignette dots
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 215, 0, ${p.a})`;
+        ctx.fill();
+      });
+
+      spawnStar();
+      stars = stars.filter(s => s.life > 0);
+      stars.forEach(s => {
+        s.x += s.speed;
+        s.y += s.speed * 0.35;
+        s.life -= 0.02;
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x - s.len, s.y - s.len * 0.35);
+        ctx.strokeStyle = `rgba(255, 215, 0, ${s.life * 0.7})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      });
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

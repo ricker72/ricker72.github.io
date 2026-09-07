@@ -273,6 +273,7 @@
     <nav>
       <a href="#home">Inicio</a>
       <a href="#projects">Proyectos</a>
+      <a href="legacyx/">LegacyX Editor</a>
     </nav>
     <section id="home" class="hero">
       <h1 data-aos="fade-up">Ricker72</h1>
@@ -292,6 +293,21 @@
       </div>
     </section>
     <section id="projects">
+      <!-- Featured: LegacyX Editor -->
+      <div class="projects-grid" style="margin-bottom: 2rem;">
+        <div class="project-card" data-aos="fade-up" id="legacyx-featured" style="border-color: rgba(255,215,0,0.55); box-shadow: 0 10px 40px rgba(255,215,0,0.12);">
+          <h3>LegacyX Editor</h3>
+          <span class="lang-badge" style="background: #17860020; color: #178600; border-color: #178600;">C# · .NET 10</span>
+          <p>Editor de mapas OpenTibia que supera a RME. Paridad certificada + Ingame Simulation (OTClient) + God Mode, NPC Maker, Spell Creator, Live Collaboration. 100% C# / Windows Forms. Tibia 10.98.</p>
+          <div class="stats">
+            <span class="stat">🗺️ Sim+GOD</span>
+            <span class="stat">✅ RME Parity</span>
+            <span class="stat">v1.9.8</span>
+          </div>
+          <a href="legacyx/" class="btn-view" style="text-decoration:none; display:inline-block;">✦ Ver página oficial</a>
+          <a href="https://github.com/ricker72/ricker72.github.io/releases" target="_blank" rel="noopener" class="btn-view" style="text-decoration:none; display:inline-block; margin-left:0.5rem;">↓ Releases</a>
+        </div>
+      </div>
       <div class="projects-grid" id="projectsContainer">
         <div class="loading-spinner"></div>
       </div>
@@ -434,7 +450,17 @@
       }
       AOS.refresh();
     }
-    window.addEventListener('DOMContentLoaded', loadProjects);
+    window.addEventListener('DOMContentLoaded', () => {
+      loadProjects();
+      const featured = document.getElementById('legacyx-featured');
+      if (featured) {
+        applyTilt(featured);
+        featured.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          window.location.href = 'legacyx/';
+        });
+      }
+    });
   </script>
 </body>
 </html>
