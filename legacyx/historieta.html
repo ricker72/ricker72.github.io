@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historieta LegacyX — 4 páginas | @Ricker72</title>
+  <meta name="description" content="Historieta oficial de LegacyX Editor: qué es, el core SharpMapTracker + OTClient, AreaGen por semilla, mapas con IA y el creador @Ricker.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050508;
+      --surface: #0c0c12;
+      --gold: #ffd700;
+      --gold-dim: rgba(255, 215, 0, 0.15);
+      --gold-glow: rgba(255, 215, 0, 0.35);
+      --cyan: #00e5ff;
+      --text: #e8e6e3;
+      --muted: #9a9690;
+      --border: rgba(255, 215, 0, 0.22);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(5, 5, 8, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand span { color: var(--text); font-weight: 500; }
+
+    .top-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .top-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .top-links a:hover {
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    /* Header */
+    .hero-comic {
+      text-align: center;
+      padding: 2rem 1.25rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,215,0,0.06), transparent);
+    }
+    .hero-comic h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      letter-spacing: 0.04em;
+      background: linear-gradient(90deg, var(--gold), #fff3a0, var(--gold));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 5s linear infinite;
+      margin-bottom: 0.4rem;
+    }
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+    .hero-comic p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 500;
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    /* Progress + page indicator */
+    .reader-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      padding: 1rem 1.25rem 0.5rem;
+      flex-wrap: wrap;
+    }
+    .page-indicator {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+    }
+    .page-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    /* Main stage */
+    .stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem 1.5rem;
+      position: relative;
+      min-height: 50vh;
+    }
+
+    .page-frame {
+      position: relative;
+      max-width: min(1100px, 96vw);
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(255,215,0,0.06),
+        0 20px 60px rgba(0,0,0,0.55),
+        0 0 80px var(--gold-dim);
+      background: #000;
+    }
+
+    .page-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .page-frame.loading::after {
+      content: 'Cargando página…';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      color: var(--gold);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* Nav arrows */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(5, 5, 8, 0.85);
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--gold-dim);
+      box-shadow: 0 0 24px var(--gold-glow);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .nav-btn:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+    .nav-prev { left: 8px; }
+    .nav-next { right: 8px; }
+
+    @media (min-width: 900px) {
+      .nav-prev { left: max(8px, calc(50% - 580px)); }
+      .nav-next { right: max(8px, calc(50% - 580px)); }
+    }
+
+    /* Thumbnails */
+    .thumbs {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0 1rem 1.5rem;
+      flex-wrap: wrap;
+    }
+    .thumb {
+      width: 110px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      opacity: 0.55;
+      transition: opacity 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      background: #111;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+    .thumb:hover {
+      opacity: 0.9;
+      transform: translateY(-3px);
+    }
+    .thumb.active {
+      opacity: 1;
+      border-color: var(--gold);
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+    .thumb-wrap {
+      text-align: center;
+    }
+    .thumb-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .thumb-wrap.active .thumb-label { color: var(--gold); }
+
+    /* Synopsis */
+    .synopsis {
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 1.02rem;
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .synopsis strong { color: var(--text); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Keyboard hint */
+    .hint {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      opacity: 0.7;
+      padding-bottom: 0.75rem;
+    }
+    .hint kbd {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Fade transition */
+    .page-frame img {
+      animation: fadeIn 0.35s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">← Legacy<span>X</span> · Historieta</a>
+    <div class="top-links">
+      <a href="index.html">Web LegacyX</a>
+      <a href="../index.html">Hub Ricker72</a>
+      <a href="https://github.com/ricker72/ricker72.github.io/releases" target="_blank" rel="noopener">Releases</a>
+    </div>
+  </header>
+
+  <div class="hero-comic">
+    <h1>HISTORIETA LEGACYX</h1>
+    <p>4 páginas · Qué es · Core SharpMapTracker + OTClient · AreaGen & IA · @Ricker</p>
+  </div>
+
+  <div class="reader-meta">
+    <span class="page-indicator" id="pageNum">PÁGINA 1 / 4</span>
+    <span class="page-title" id="pageTitle">¿Qué es LegacyX?</span>
+  </div>
+
+  <div class="stage">
+    <button class="nav-btn nav-prev" id="btnPrev" aria-label="Página anterior">‹</button>
+    <div class="page-frame" id="frame">
+      <img id="pageImg" src="comic/page1.jpg" alt="LegacyX Historieta — Página 1" width="1100" height="700">
+    </div>
+    <button class="nav-btn nav-next" id="btnNext" aria-label="Página siguiente">›</button>
+  </div>
+
+  <p class="hint">Usa las flechas <kbd>←</kbd> <kbd>→</kbd> o haz clic en las miniaturas</p>
+
+  <div class="thumbs" id="thumbs"></div>
+
+  <div class="synopsis" id="synopsis">
+    <strong>Página 1 — ¿Qué es?</strong><br>
+    En el mundo OpenTibia los mapas clásicos tenían un límite. Ricker mira RME y decide ir más allá.
+    Nace LegacyX Editor: paridad RME certificada + Sim+GOD + herramientas avanzadas, todo en un solo runtime C# / .NET 10.
+  </div>
+
+  <footer>
+    <p>Crafted exclusively by <a href="https://github.com/ricker72" target="_blank" rel="noopener">@Ricker72</a> · LegacyX Editor</p>
+    <p style="margin-top:0.4rem;font-size:0.8rem;opacity:0.75;">
+      <a href="index.html">← Volver a la web de LegacyX</a>
+    </p>
+  </footer>
+
+  <script>
+    const PAGES = [
+      {
+        src: 'comic/page1.jpg',
+        title: '¿Qué es LegacyX?',
+        synopsis: '<strong>Página 1 — ¿Qué es?</strong><br>En el mundo OpenTibia los mapas clásicos tenían un límite. Ricker mira RME y decide ir más allá. Nace LegacyX Editor: paridad RME certificada (P0/P1) + Sim+GOD + herramientas avanzadas, todo en un solo runtime C# / .NET 10 / Windows Forms.'
+      },
+      {
+        src: 'comic/page2.jpg',
+        title: 'El Core: SharpMapTracker + OTClient',
+        synopsis: '<strong>Página 2 — El Core</strong><br>El corazón se llama <em>SharpMapTracker</em>. RME es la autoridad clásica; OTClient (src/client + framework) se embebe en C# para PlayerWalker, LightView y PathFind. Render dual GDI+ / D3D11. Simulación in-game + God Mode dentro del editor. Un solo proceso · Paridad certificada · Sim+GOD v1.8.1+.'
+      },
+      {
+        src: 'comic/page3.jpg',
+        title: 'Poder total: AreaGen, IA y más',
+        synopsis: '<strong>Página 3 — Poder total</strong><br>Search/Jump, NPC Maker, Spell Creator, Planner, Live Collaboration, Theme ES/EN/PT. <em>AreaGen</em>: crear mapas por semilla. Mapas mediante IA (agente / automatización). Simulación in-game sin servidor y God Mode con noclip, go-to position e inspect flags. Desde el brush clásico hasta generación procedural e IA.'
+      },
+      {
+        src: 'comic/page4.jpg',
+        title: '@Ricker — El creador',
+        synopsis: '<strong>Página 4 — @Ricker</strong><br>Reymundo (@Ricker): desarrollador, mapper y builder de herramientas. Línea de tiempo: Herramientas OT → Agente_RME → SharpMapTracker → LegacyX Editor. Filosofía: <em>No second runtime · No C++ in production · No invented IDs · No vibe coding.</em> Hecho para la comunidad OpenTibia. El editor que superó a RME. github.com/ricker72'
+      }
+    ];
+
+    let current = 0;
+    const img = document.getElementById('pageImg');
+    const pageNum = document.getElementById('pageNum');
+    const pageTitle = document.getElementById('pageTitle');
+    const synopsis = document.getElementById('synopsis');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const thumbsEl = document.getElementById('thumbs');
+
+    // Build thumbnails
+    PAGES.forEach((p, i) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'thumb-wrap' + (i === 0 ? ' active' : '');
+      wrap.dataset.index = i;
+      const t = document.createElement('img');
+      t.className = 'thumb' + (i === 0 ? ' active' : '');
+      t.src = p.src;
+      t.alt = 'Miniatura página ' + (i + 1);
+      t.loading = 'lazy';
+      const label = document.createElement('div');
+      label.className = 'thumb-label';
+      label.textContent = 'Pág. ' + (i + 1);
+      wrap.appendChild(t);
+      wrap.appendChild(label);
+      wrap.addEventListener('click', () => goTo(i));
+      thumbsEl.appendChild(wrap);
+    });
+
+    function goTo(index) {
+      if (index < 0 || index >= PAGES.length) return;
+      current = index;
+      const p = PAGES[current];
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.src = p.src;
+        img.alt = 'LegacyX Historieta — Página ' + (current + 1);
+        img.onload = () => { img.style.opacity = '1'; };
+        // fallback if cached
+        img.style.opacity = '1';
+      }, 120);
+      pageNum.textContent = 'PÁGINA ' + (current + 1) + ' / ' + PAGES.length;
+      pageTitle.textContent = p.title;
+      synopsis.innerHTML = p.synopsis;
+      btnPrev.disabled = current === 0;
+      btnNext.disabled = current === PAGES.length - 1;
+      document.querySelectorAll('.thumb').forEach((el, i) => {
+        el.classList.toggle('active', i === current);
+      });
+      document.querySelectorAll('.thumb-wrap').forEach((el, i) => {
+        el.classList.toggle('active', i === current);
+      });
+      // optional: scroll page into view on mobile
+      document.getElementById('frame').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    // Touch swipe
+    let touchX = null;
+    const frame = document.getElementById('frame');
+    frame.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].screenX; }, { passive: true });
+    frame.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].screenX - touchX;
+      if (Math.abs(dx) > 50) {
+        if (dx < 0) goTo(current + 1);
+        else goTo(current - 1);
+      }
+      touchX = null;
+    }, { passive: true });
+
+    // Init
+    goTo(0);
+  </script>
+</body>
+</html>
